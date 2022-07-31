@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+  jahanafza:
+    image: jahanafza_backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jahanafza
+    environment:
+     - DB_ENGINE=django.db.backends.postgresql
+     - DB_NAME=jahan_afza
+     - DB_USER=pguser11oQ8P
+     - DB_PASSWORD=udLXtXLedaB3S6Ec
+     - DB_HOST=188.121.120.68
+     - DB_PORT=45432
+    restart: always
+  
+networks:
+  default:
+    external:
+      name: nginx-proxy

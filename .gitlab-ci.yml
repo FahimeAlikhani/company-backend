@@ -1,0 +1,22 @@
+image:
+  name: repo.ficld.ir/docker/compose:latest
+
+before_script:
+  - docker version
+  - docker-compose version
+
+Build-Stage:
+  stage: build
+  only:
+    - backend
+  script: |
+    docker-compose down
+    docker-compose build --no-cache --force-rm
+
+Deploy-Stage:
+  stage: deploy
+  only:
+    - backend
+  script: |
+    docker-compose up -d
+
